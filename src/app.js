@@ -1,10 +1,19 @@
-let city = "Kyiv"
-let apiKey = "3dc39916f235285875a7d4fd53778f07";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
+function handleSubmit (event) {
+    event.preventDefault();
+    let searchFieldValue = document.querySelector("#city-input-search");
+    search(searchFieldValue.value);
+}
 
+function search(city) {
+    let apiKey = "3dc39916f235285875a7d4fd53778f07";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayTemperature);
+    axios.get(apiUrl).then(displayTemperature);
+}
+
 
 
 function formatDate(timestamp) {
@@ -13,7 +22,7 @@ function formatDate(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
     let minutes = date.getMinutes();
-    let days = weekdays[date.getDay()];
+    let days = weekdays[date.getDay()];  
 
     if (minutes < 10) {
         minutes = `0${minutes}`;
@@ -62,4 +71,3 @@ function displayTemperature (response) {
 }
 
 
-  
