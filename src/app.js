@@ -75,8 +75,9 @@ function displayTemperature (response) {
 
 //convert temp degree from C to F
 
-function showFahrenheitTemp(event) {
-    event.preventDefault();
+
+let fahrenheitLink = document.querySelector("#fahrenheit-units");
+fahrenheitLink.addEventListener("click", function() {
 
     let temperatureElement = document.querySelector("#temperature");
 
@@ -85,18 +86,17 @@ function showFahrenheitTemp(event) {
     let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
 
     temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+ 
+}, {once : true}); 
+       
 
-}
-
-
-let fahrenheitLink = document.querySelector("#fahrenheit-units");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);   
-
-//convert temp degree fro F to C
+//convert temp degree from F to C
 
 
-function showCelsiusTemp(event) {
-    event.preventDefault();
+
+
+let celsiusLink = document.querySelector("#celsius-units");
+celsiusLink.addEventListener("click", function () {
 
     let temperatureElement = document.querySelector("#temperature");
 
@@ -105,8 +105,5 @@ function showCelsiusTemp(event) {
     let celsiusTemp = (fahrenheitTemp - 32) * 5/9;
 
     temperatureElement.innerHTML = Math.round(celsiusTemp);
-
-}
-
-let celsiusLink = document.querySelector("#celsius-units");
-celsiusLink.addEventListener("click", showCelsiusTemp); 
+ 
+}, {once : true}); 
