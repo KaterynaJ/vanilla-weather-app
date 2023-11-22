@@ -38,7 +38,7 @@ li::first-letter {
     margin: 30px auto;
 }
 
-.units {
+.main-units {
 position: relative;
 top: 0px;
 font-size: 14px;
@@ -50,8 +50,22 @@ font-size: 14px;
     line-height: 1;
 }
 
-.weather-app img {
+.main-weather-image {
     margin-right: 10px;
     height: 64px;
     width: 64px;
+}
+
+.weather-forecast {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.weather-forecast img {
+    width: 40px
+}
+
+.forecast-temp-min {
+    opacity: 50%;
 }

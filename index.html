@@ -44,13 +44,15 @@
         <div class="row">
             <div class="col-6">
                 <div class="d-flex weather-temperature">
+                    <div id="main-weather-image">
                 <img    src="" 
                         alt=""
                         id="icon"/> 
+                        </div>
                 
                 <strong id="temperature">
                 </strong>
-                <span class="units"> 
+                <span class="main-units"> 
                     <a href="#" id="celsius-units">
                         C
                     </a> | 
@@ -69,6 +71,33 @@
                     </li>
                 </ul>
             </div>
+        </div> 
+        <div class="weather-forecast">
+            <div class="row">
+                <div class="col-2">
+                    Tue
+                    <img
+                    src="http://openweathermap.org/img/wn/50d@2x.png"
+                    alt=""
+                    width= 16 />
+                    <div class="forecast-temp">
+                    <span class="forecast-temp-max">18</span> 
+                    <span class="forecast-temp-min">12</span>
+                </div>
+                </div>
+                <div class="col-2">
+                    Wed
+                </div>
+                <div class="col-2">
+                    Thu
+                </div>
+                <div class="col-2">
+                    Fri
+                </div>
+                <div class="col-2">
+                    Sat
+                </div>
+            </div>
         </div>
     </div>
     <small>
@@ -76,8 +105,7 @@
         href="https://github.com/KaterynaJ/vanilla-weather-app" 
         target="_blank">Open-source code</a> by Kate and <a href="https://app.netlify.com/sites/relaxed-gaufre-4010dc/overview">hosted on Netlify</a>
     </small>
-    </div>
-</div>
+    
 <script src="src/app.js"></script>
 </body>
 </html>
