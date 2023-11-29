@@ -107,3 +107,28 @@ celsiusLink.addEventListener("click", function () {
     temperatureElement.innerHTML = Math.round(celsiusTemp);
  
 }, {once : true}); 
+
+
+function displayForecast() {
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+    let forecastHtml = "";
+
+    days.forEach(function (day) {
+        forecastHtml = forecastHtml + `
+        <div class="forecast-weekend">
+        <div class="forecast-date">${day}</div>
+        <div class="forecast-icon">&#9925;</div>
+            <div class="forecast-temp">
+                <span class="forecast-temp-max"><strong>18</strong></span> 
+                <span class="forecast-temp-min">12</span>
+            </div> 
+            </div>
+            `;
+            });
+
+    let forecastElement = document.querySelector("#forecast");
+    forecastElement.innerHTML = forecastHtml;
+};
+
+displayForecast();
+search("Calgary");
