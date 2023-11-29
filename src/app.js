@@ -70,7 +70,9 @@ function displayTemperature (response) {
         "alt",
         response.data.weather[0].description);
 
-}
+    getForecast(response.data.name);
+
+    }
 
 
 //convert temp degree from C to F
@@ -109,7 +111,8 @@ celsiusLink.addEventListener("click", function () {
 }, {once : true}); 
 
 
-function displayForecast() {
+function displayForecast(answer) {
+    console.log(answer.data)
     let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
     let forecastHtml = "";
 
@@ -130,5 +133,10 @@ function displayForecast() {
     forecastElement.innerHTML = forecastHtml;
 };
 
-displayForecast();
 search("Calgary");
+
+function getForecast(city) {
+    let apiKey = "57cdf82e2de3o0146tca4739b468cac4";
+    let apiLink = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+    axios(apiLink).then(displayForecast);
+}
