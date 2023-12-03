@@ -90,12 +90,9 @@ fahrenheitLink.addEventListener("click", function() {
     temperatureElement.innerHTML = Math.round(fahrenheitTemp);
  
 }, {once : true}); 
-       
 
+/*
 //convert temp degree from F to C
-
-
-
 
 let celsiusLink = document.querySelector("#celsius-units");
 celsiusLink.addEventListener("click", function () {
@@ -109,21 +106,25 @@ celsiusLink.addEventListener("click", function () {
     temperatureElement.innerHTML = Math.round(celsiusTemp);
  
 }, {once : true}); 
+*/
+
+function displayForecast(response) {
 
 
-function displayForecast(answer) {
-    console.log(answer.data)
-    let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+    console.log(response.data)
+
     let forecastHtml = "";
 
-    days.forEach(function (day) {
+    response.data.daily.forEach(function (day) {
         forecastHtml = forecastHtml + `
         <div class="forecast-weekend">
-        <div class="forecast-date">${day}</div>
-        <div class="forecast-icon">&#9925;</div>
+        <div class="forecast-date">${formatForecastDate(day.time)}</div>
+        <div class="forecast-icon">
+            <img src="${day.condition.icon_url}" />
+        </div>
             <div class="forecast-temp">
-                <span class="forecast-temp-max"><strong>18</strong></span> 
-                <span class="forecast-temp-min">12</span>
+                <span class="forecast-temp-max"><strong>${Math.round(day.temperature.maximum)}°</strong></span> 
+                <span class="forecast-temp-min">${Math.round(day.temperature.minimum)}°</span>
             </div> 
             </div>
             `;
@@ -133,6 +134,7 @@ function displayForecast(answer) {
     forecastElement.innerHTML = forecastHtml;
 };
 
+
 search("Calgary");
 
 function getForecast(city) {
@@ -140,3 +142,10 @@ function getForecast(city) {
     let apiLink = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
     axios(apiLink).then(displayForecast);
 }
+
+
+function formatForecastDate(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    return days[date.getDay()];
+};
